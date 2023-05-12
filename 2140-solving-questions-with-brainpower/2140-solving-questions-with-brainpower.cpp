@@ -10,9 +10,8 @@ long long dp(int i,vector<vector<int>>& questions){
     if (mem[i]!=-1){
         return mem[i];
     }
-    long long ans=0;
-   ans=ans+max(questions[i][0]+dp(i+1+questions[i][1],questions),dp(i+1,questions));
-    return mem[i]=ans;
+
+  return mem[i]= max(questions[i][0]+dp(i+1+questions[i][1],questions),dp(i+1,questions));
 }
 long long mostPoints(vector<vector<int>>& questions) {
 n=questions.size();
