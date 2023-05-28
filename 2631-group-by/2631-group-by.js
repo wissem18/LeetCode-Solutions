@@ -6,7 +6,7 @@ Array.prototype.groupBy = function(fn) {
     let res=new Object();
     for(let e of this){
         const x=fn(e);
-      if( Object.keys(res).includes(x))
+      if(x in res)
           res[x].push(e);
       else
           res[x]=[e];
