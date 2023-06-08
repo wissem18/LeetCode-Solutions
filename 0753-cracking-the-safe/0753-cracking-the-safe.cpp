@@ -27,9 +27,9 @@ string crackSafe(int n, int k) {
     dfs(startNode, k, alphabet,edges);
     string ans;
     for (int i = 0; i < l; ++i) {
-        ans+=alphabet[edges[edges.size()-1-i]];
+        ans+=alphabet[edges[edges.size()-l+i]];
     }
-        reverse(ans.begin(),ans.end());
+        //reverse(ans.begin(),ans.end());
     ans+=startNode;
     return ans;
 }
