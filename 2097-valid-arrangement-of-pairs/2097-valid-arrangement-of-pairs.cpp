@@ -1,8 +1,8 @@
 class Solution {
 public:
 vector<vector<int>> validArrangement(vector<vector<int>>& pairs) {
-map<int,vector<int>>adj;
-map<int,int>in;
+unordered_map<int,vector<int>>adj;
+unordered_map<int,int>in;
     for (auto p:pairs) {
       adj[p[0]].push_back(p[1]);
       in[p[1]]++;
