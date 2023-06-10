@@ -13,16 +13,17 @@ bool check(string s){
 int longestSemiRepetitiveSubstring(string s) {
 int n=s.size();
 int ans=0;
-    for (int i = 0; i < n; ++i) {
-        string cur="";
-        for (int j = i; j < n; ++j) {
-         cur+=s[j];
-         if(!check(cur)){
-             cur.pop_back();
-             break;
-         }
+int l=0,r=0;
+    while(l<=r&&r<n){
+        string cur=s.substr(l,r-l+1);
+        if(check(cur)){
+            ans=max(ans,r-l+1);
+            r++;
+           
         }
-        ans=max(ans,(int)cur.size());
+        else{
+            l++;
+        }
     }
     return ans;
 }
