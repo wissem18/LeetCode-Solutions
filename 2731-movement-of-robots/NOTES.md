@@ -5,18 +5,25 @@ the first intuition is the collision problem in fact it's not a problem is just 
 second intuition is about how to compute differences (the positive ones because the problem said the absolute difference).
 let for example an array [a0,a1,a2] sorted in decreasing order what will be the sum of positive differences of all pairs 
 
-S=(a0-a1)+(a0-a1)+(a1-a2). 
-a1: added 2 times and substracted 0 times
-a2: added 1 times and substracted 1 times
-a3: added 0 times and substracted 2 times
+S=(a0-a1)+(a0-a1)+(a1-a2).  
+
+a1: added 2 times and substracted 0 times  
+
+a2: added 1 times and substracted 1 times  
+
+a3: added 0 times and substracted 2 times  
+
 So in general we can say that each element ai will be added n-i-1 times and substracted i times in the total sum of differences so the contribution of each element ai in the total sum will be n-2*i-1.
 
-last intuition don't forget the modulo and mostly the negative case 
+last intuition don't forget the modulo and mostly the negative case  
+
 (A-B)%MOD=(A%MOD+(-B)%MOD+MOD)%MOD  
 # Approach
 <!-- Describe your approach to solving the problem. -->
-As described above we will firstly begin by looping for all the robots positions and add d if its direction is R or substract d if its direction is L.
-Now we have the final positions of each robot after d seconds, So the rest of the problem is to compute the sum of differences : 
+As described above we will firstly begin by looping for all the robots positions and add d if its direction is R or substract d if its direction is L.  
+
+Now we have the final positions of each robot after d seconds, So the rest of the problem is to compute the sum of differences :   
+
 First sort the array nums in decreasing order then compute the contribution of each element to the total sum . 
 # Complexity
 - Time complexity:
