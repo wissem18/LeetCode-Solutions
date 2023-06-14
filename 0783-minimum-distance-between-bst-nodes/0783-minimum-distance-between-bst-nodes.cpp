@@ -12,16 +12,15 @@
 class Solution {
 public:
     vector<int>tree;
-    void preorder(TreeNode* root){
+    void inorder(TreeNode* root){
         if(root==NULL)
         return; 
-        preorder(root->left);
+        inorder(root->left);
         tree.push_back(root->val);
-        preorder(root->right);
+        inorder(root->right);
     }
     int minDiffInBST(TreeNode* root) {
-        preorder(root);
-        sort(tree.begin(),tree.end());
+        inorder(root);
         int ans=1e9;
         for(int i=1;i<tree.size();i++){
             ans=min(ans,tree[i]-tree[i-1]);
