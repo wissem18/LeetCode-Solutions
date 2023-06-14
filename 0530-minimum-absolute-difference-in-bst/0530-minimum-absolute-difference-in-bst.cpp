@@ -11,17 +11,16 @@
  */
 class Solution {
 public:
-void preorder(TreeNode* root,vector<int>&ans){
+void inorder(TreeNode* root,vector<int>&ans){
      if(!root)
          return ;
+   inorder(root->left,ans);
     ans.push_back(root->val);
-    preorder(root->left,ans);
-    preorder(root->right,ans);
+    inorder(root->right,ans);
  }
     int getMinimumDifference(TreeNode* root) {
       vector<int>a;
-        preorder(root,a);
-        sort(a.begin(),a.end());
+        inorder(root,a);
         int ans=1e9;
         for(int i=1;i<a.size();i++){
             ans=min(ans,a[i]-a[i-1]);
