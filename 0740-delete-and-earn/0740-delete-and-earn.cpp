@@ -6,6 +6,8 @@ int dp(int i,vector<int>&a){
         return 0;
     if(mem[i]!=-1)
      return mem[i];
+    if(!a[i])
+        return mem[i]= dp(i+1,a);
     return mem[i]=max(dp(i+2,a)+a[i]*i,dp(i+1,a));
 }
 int deleteAndEarn(vector<int>& nums) {
