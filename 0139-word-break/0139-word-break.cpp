@@ -1,28 +1,24 @@
 class Solution {
 public:
-set<string>st;
-int n;
-map<pair<int,string>,bool>mp;
-bool dp(int i,string cur,string &s){
-  if(i==n){
-      return cur.empty();
-  }
-  if(mp.count({i,cur}))
-      return mp[{i,cur}];
-    bool ans=false;
-  string nw=cur+s[i];
-    if(st.count(nw)){
-        ans|=dp(i+1,"",s);
-    }
-     ans|=dp(i+1,nw,s);
-
-    return mp[{i,cur}]=ans;
-}
 bool wordBreak(string s, vector<string>& wordDict) {
-n=s.size();
+    int n=s.size();
+    set<string>st;
     for (auto x:wordDict) {
         st.insert(x);
     }
-  return dp(0,"",s);
+    vector<int>dp(n+1,0);
+    dp[0]=1;
+    for (int i = 1; i <=n ; ++i) {
+        for (int j = i-1; j >=0 ; --j) {
+            if(dp[j]){
+                string cur=s.substr(j,i-j);
+                if(st.count(cur)){
+                    dp[i]=true;
+                    break;
+                }
+            }
+        }
+    }
+    return dp[n];
 }
 };
