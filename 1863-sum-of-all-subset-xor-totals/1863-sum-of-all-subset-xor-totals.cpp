@@ -1,16 +1,12 @@
 class Solution {
 public:
-   int subsetXORSum(vector<int>& nums) {
-        int n=nums.size();
-        int ans=0;
-       for (int i = 0; i < (1<<n); ++i) {
-           int cur=0;
-           for (int j = 0; j < n; ++j) {
-               if(i&(1<<j))
-                   cur^=nums[j];
-           }
-           ans+=cur;
-       }
-       return ans;
-    }
+int subset(int i,int cur,vector<int> &nums){
+    if(i==nums.size())
+        return cur;
+    return subset(i+1,cur^nums[i],nums)+subset(i+1,cur,nums);
+}
+int subsetXORSum(vector<int> &nums) {
+ return subset(0,0,nums);
+
+}
 };
