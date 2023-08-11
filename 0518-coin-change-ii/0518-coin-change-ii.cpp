@@ -3,18 +3,16 @@ public:
 vector<vector<int>> mem;
 
 int dp(int i, int cur, int &amount, vector<int> &coins) {
+    if(cur==amount)
+        return 1;
     if (i == coins.size()) {
-        return cur == amount;
+        return 0;
     }
     if (mem[i][cur] != -1)
         return mem[i][cur];
-    int ans = 0;
-    for (int j = 0; j <= 5000; ++j) {
-        if (cur + j * coins[i] > amount)
-            break;
-        ans += dp(i + 1, cur + j * coins[i], amount, coins);
-    }
-    return mem[i][cur] = ans;
+    if(coins[i]>amount-cur)
+        return mem[i][cur]=dp(i+1,cur,amount,coins);
+    return mem[i][cur]=dp(i,cur+coins[i],amount,coins)+dp(i+1,cur,amount,coins);
 
 }
 
