@@ -1,6 +1,6 @@
 class Solution {
 public:
- int mem[105][105];
+ vector<vector<int>> mem;
 int n, m;
 
 int dp(int i, int j, vector<vector<int>> &obstacleGrid) {
@@ -22,7 +22,7 @@ int uniquePathsWithObstacles(vector<vector<int>> &obstacleGrid) {
     m = obstacleGrid[0].size();
     if(obstacleGrid[0][0])
         return 0;
-    memset(mem, -1, sizeof mem);
+    mem.assign(n,vector<int>(m,-1));
     return dp(0,0,obstacleGrid);
 }
 };
