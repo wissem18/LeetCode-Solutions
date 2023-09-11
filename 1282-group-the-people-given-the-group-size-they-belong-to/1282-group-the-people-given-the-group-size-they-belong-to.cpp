@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> groupThePeople(vector<int>& groupSizes) {
-unordered_map<int,vector<int>>sz;
+map<int,vector<int>>sz;
     for (int i = 0; i < groupSizes.size(); ++i) {
         sz[groupSizes[i]].push_back(i);
     }
