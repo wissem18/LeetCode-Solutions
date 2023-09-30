@@ -2,7 +2,7 @@ class Solution {
 public:
 int minOperations(vector<int>& nums) {
     int n=nums.size();
-    map<int,int>cnt;
+    unordered_map<int,int>cnt;
     int ans=0;
     for (int i = 0; i < n; ++i) {
         cnt[nums[i]]++;
