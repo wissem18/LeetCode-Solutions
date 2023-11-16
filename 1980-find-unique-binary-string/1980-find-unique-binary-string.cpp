@@ -11,7 +11,7 @@ string intToBinary(int n) {
 }
 string findDifferentBinaryString(vector<string> &nums) {
     int n = nums.size();
-    for (int i = 0; i < (1 << n); ++i) {
+    for (int i = 0; i <=n; ++i) {
         string cur = intToBinary(i);
         while (cur.size() < n)cur = "0" + cur;
         if(find(nums.begin(),nums.end(),cur)==nums.end())return cur;
