@@ -10,6 +10,8 @@ int maxFrequency(vector<int> &nums, int k) {
     int ans=1;
     for (int i =n-1; i >=0; --i) {
       int l=0,r=i;
+        if(i-l+1<=ans)
+            break;
       while(l<r){
           int mid=(l+r)/2;
           long long cur=pre[i]-pre[mid];
