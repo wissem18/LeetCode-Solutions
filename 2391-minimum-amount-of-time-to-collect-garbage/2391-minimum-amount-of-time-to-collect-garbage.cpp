@@ -1,7 +1,7 @@
 class Solution {
 public:
 int garbageCollection(vector<string> &garbage, vector<int> &travel) {
-    unordered_map<char, int> lst;
+   map<char, int> lst;
     int n = travel.size();
     int ans = 0;
     for (int i = 0; i < garbage.size(); ++i) {
