@@ -7,7 +7,7 @@ int rev(int x) {
     return stoi(s);
 }
 int countNicePairs(vector<int>& nums) {
-map<int,int>occ;
+unordered_map<int,int>occ;
     for (auto c:nums) {
      occ[c-rev(c)]++;
     }
