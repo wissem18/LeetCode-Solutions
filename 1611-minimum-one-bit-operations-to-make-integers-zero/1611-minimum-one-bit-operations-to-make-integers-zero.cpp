@@ -10,10 +10,6 @@ int GrayToBin(int n) {
 }
 
 int minimumOneBitOperations(int n) {
-    if (!n)
-        return n;
-    int k = __builtin_clz(n);
-    int msb=(1 << (31 - k));
-    return msb * 2 - 1 - GrayToBin(n - msb);
+    return GrayToBin(n);
 }
 };
