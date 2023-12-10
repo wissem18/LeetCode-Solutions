@@ -9,6 +9,7 @@ vector<vector<int>> transpose(vector<vector<int>>& matrix) {
            ans[i][j]=matrix[j][i];
         }
     }
-    return ans;
+    matrix=ans;
+    return matrix;
 }
 };
