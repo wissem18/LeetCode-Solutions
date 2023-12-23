@@ -2,26 +2,30 @@ class Solution {
 public:
 
 int incremovableSubarrayCount(vector<int>& nums) {
-int ans=0;
-int n=nums.size();
-    for (int i = 0; i < n; ++i) {
-        for (int j = i; j <n ; ++j) {
-            vector<int>x;
-            for (int k = 0; k < i; ++k) {
-                x.push_back(nums[k]);
-            }
-            for (int k = j+1; k <n ; ++k) {
-                x.push_back(nums[k]);
-            }
-            bool test= true;
-            for (int k = 1; k <x.size() ; ++k) {
-                if(x[k-1]>=x[k]){test=false;
-                break;}
-            }
-            if(test)
-                ans++;
-        }
+    long long n = nums.size();
+    long long i = 1;
+    while (i < n && nums[i] > nums[i - 1]) {
+        i++;
     }
-    return ans;
+    if (i == n)
+        return n * (n + 1) / 2;
+    else {
+        long long l = i;
+        long long ans = 0;
+//        cout<<"l : "<<l<<endl;
+        ans += l + 1;
+        i = 1;
+        while (i <n && nums[n - i - 1] < nums[n - i]) {
+            i++;
+        }
+        long long r = i;
+//cout<<"r : "<<r<<endl;
+        ans += r;
+        for (int j = 0; j < l; ++j) {
+            while(r&&nums[j]>=nums[n-r])r--;
+            ans+=r;
+        }
+        return ans;
+    }
 }
 };
