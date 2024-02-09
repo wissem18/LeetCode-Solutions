@@ -1,27 +1,28 @@
 class Solution {
 public:
-vector<int>mem;
-vector<int>ans;
-void dp(int i,vector<int>&cur,vector<int>&nums){
-    if(i==nums.size()){
-        if(cur.size()>ans.size())
-            ans=cur;
-        return;
-    }
-    dp(i+1,cur,nums);
-    if((cur.empty()||nums[i]%cur.back()==0)&&mem[i]<cur.size()+1){
-        mem[i]=cur.size()+1;
-        cur.push_back(nums[i]);
-        dp(i+1,cur,nums);
-        cur.pop_back();
-    }
-}
 vector<int> largestDivisibleSubset(vector<int> &nums) {
     int n=nums.size();
     sort(nums.begin(),nums.end());
-    mem.assign(n,0);
-    vector<int>cur;
-    dp(0,cur,nums);
+    vector<int>dp(n,0);
+    vector<int>par(n,-1);
+    int mx=0,mxind=0;
+    for (int i = n-1; i >=0 ; --i) {
+        for (int j = i; j <n ; ++j) {
+            if(nums[j]%nums[i]==0&&dp[i]<dp[j]+1){
+                dp[i]=dp[j]+1;
+                par[i]=j;
+            }
+            if(dp[i]>mx){
+                mx=dp[i];
+                mxind=i;
+            }
+        }
+    }
+    vector<int>ans;
+    for (int i = 0; i < mx; ++i) {
+        ans.push_back(nums[mxind]);
+        mxind=par[mxind];
+    }
     return ans;
 }
 };
