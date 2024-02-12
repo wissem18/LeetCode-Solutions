@@ -1,13 +1,16 @@
 class Solution {
 public:
 int majorityElement(vector<int> &nums) {
-unordered_map<int,int>occ;
 int n=nums.size();
+int votes=0,ans=-1;
     for (int i = 0; i < n; ++i) {
-        occ[nums[i]]++;
-        if(occ[nums[i]]>n/2)
-            return nums[i];
+        if(!votes){
+            ans=nums[i];
+            votes=1;
+        }
+        else if(nums[i]==ans)votes++;
+        else votes--;
     }
-    return  0;
+    return ans;
 }
 };
