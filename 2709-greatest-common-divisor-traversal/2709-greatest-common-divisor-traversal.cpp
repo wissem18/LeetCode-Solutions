@@ -26,22 +26,40 @@ void union_sets(int a, int b) {
         cmp--;
     }
 }
+int spf[100005];
+void sieve()
+{
+    spf[1] = 1;
+    for (int i=2; i<100005; i++)
+        spf[i] = i;
+    for (int i=4; i<100005; i+=2)
+        spf[i] = 2;
+    for (int i=3; i*i<100005; i++)
+    {
+        if (spf[i] == i)
+        {
+            for (int j=i*i; j<100005; j+=i)
+                if (spf[j]==j)
+                    spf[j] = i;
+        }
+    }
+}
+unordered_map<int, vector<int>> m;
+void getFactorization(int x,int ind)
+{
+    while (x != 1)
+    {
+        m[spf[x]].push_back(ind);
+        x = x / spf[x];
+    }
+}
 
 bool canTraverseAllPairs(vector<int> &nums) {
     int n = nums.size();
-    unordered_map<int, vector<int>> m;
+    sieve();
     for (int i = 0; i < n; ++i) {
         int x = nums[i];
-        for (int j = 2; j * j <= x; ++j) {
-            if (x % j == 0) {
-                m[j].push_back(i);
-            }
-            while (x % j == 0) {
-                x /= j;
-            }
-        }
-        if (x > 1)
-            m[x].push_back(i);
+        getFactorization(x,i);
     }
     parent.resize(n);
     sz.resize(n);
@@ -49,17 +67,15 @@ bool canTraverseAllPairs(vector<int> &nums) {
     for (int i = 0; i < n; ++i) {
         make_set(i);
     }
-    if(cmp==1)
-        return true;
     for (auto &[p, arr]: m) {
         for (int i = 0; i < arr.size() - 1; ++i) {
             union_sets(arr[i], arr[i + 1]);
             if (cmp == 1)
                 return true;
         }
-        
     }
-    
+    if(cmp==1)
+        return true;
     return false;
 }
 };
