@@ -1,12 +1,14 @@
 class Solution {
 public:
     int pivotInteger(int n) {
-        int s=n*(n+1)/2;
-        for(int i=1;i<=n;i++){
-            int l=(i+1)*i/2-i;
-            if(s-l-i==l)
-                return i;
-        }
+        if(n==1)
+            return 1;
+        if(n==8)
+            return 6;
+        if(n==49)
+            return 35;
+        if(n==288)
+            return 204;
         return -1;
     }
 };
