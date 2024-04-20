@@ -8,7 +8,7 @@ void dfs(int x,int y,vector<vector<char>>& grid){
     for (int i = 0; i < 4; ++i) {
         int nx=x+dx[i];
         int ny=y+dy[i];
-        if(nx<0||ny<0||nx>=grid.size()||ny>=grid[0].size()||grid[x][y]=='0'||vis[nx][ny])
+        if(nx<0||ny<0||nx>=grid.size()||ny>=grid[0].size()||grid[nx][ny]=='0'||vis[nx][ny])
             continue;
         dfs(nx,ny,grid);
     }
