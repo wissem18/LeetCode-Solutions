@@ -9,18 +9,16 @@ int maxProfitAssignment(vector<int> &difficulty, vector<int> &profit, vector<int
     }
     sort(worker.begin(),worker.end());
     sort(a.begin(),a.end());
-    priority_queue<int>q;
+    int mx=0; 
     int ans=0;
     int j=0;
     for (int i = 0; i < m; ++i) {
       int cur=worker[i];
       while(j<n&&a[j].first<=cur){
-          q.push(a[j].second);
+          mx=max(mx,a[j].second);
           j++;
       }
-      if(!q.empty()){
-          ans+=q.top();
-      }
+      ans+=mx;
     }
     return ans;
 }
