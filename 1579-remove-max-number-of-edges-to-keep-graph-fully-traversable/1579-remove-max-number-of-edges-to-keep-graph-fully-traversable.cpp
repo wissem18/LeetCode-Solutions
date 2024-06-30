@@ -1,6 +1,6 @@
 class Solution {
 public:
-      vector<int> parent;
+vector<int> parent;
 vector<int> sz;
 
 void make_set(int v) {
