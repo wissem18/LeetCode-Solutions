@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-map<TreeNode *, vector<TreeNode *>> adj;
+unordered_map<TreeNode *, vector<TreeNode *>> adj;
 unordered_set<TreeNode *> leaves;
 
 void helper(TreeNode *root) {
