@@ -2,7 +2,7 @@ class Solution {
 public:
 int minimumPushes(string word) {
     unordered_map<char, int> occ;
-    set<char> s;
+    unordered_set<char> s;
     for (char c: word) {
         occ[c]++;
         s.insert(c);
