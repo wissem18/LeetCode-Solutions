@@ -1,7 +1,7 @@
 class KthLargest {
 public:
     int m;
-   priority_queue<int,vector<int>, greater<int>>q;
+    priority_queue<int,vector<int>, greater<int>>q;
     KthLargest(int k, vector<int>& nums) {
         m=k;
         for(int i=0;i<nums.size();i++){
