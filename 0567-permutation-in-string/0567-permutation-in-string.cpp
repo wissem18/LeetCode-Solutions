@@ -1,9 +1,9 @@
 class Solution {
 public:
  bool checkInclusion(string s1, string s2) {
-         if(s1.size()>s2.size())
+    if(s1.size()>s2.size())
         return false;
-vector<int> occ(26,0);
+    vector<int> occ(26,0);
     for (int i = 0; i < s1.size(); ++i) {
         occ[s1[i]-'a']++;
     }
@@ -18,9 +18,9 @@ vector<int> occ(26,0);
             nb++;
             if(nb==s1.size())
                 return true;
+            }
+        i++;
         }
-       i++;
-    }
     return false;
-}
+    }
 };
