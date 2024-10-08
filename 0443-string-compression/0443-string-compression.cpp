@@ -13,8 +13,8 @@ int compress(vector<char>& chars) {
            if(j-i==1)
                ans++;
            else{
-             ans+=floor(log10(j-i)+1)+1;
              string s=to_string(j-i);
+             ans+=s.size()+1;
              for(int k=0;k<s.size();k++){
                  chars[index++]=s[k];
              }      
