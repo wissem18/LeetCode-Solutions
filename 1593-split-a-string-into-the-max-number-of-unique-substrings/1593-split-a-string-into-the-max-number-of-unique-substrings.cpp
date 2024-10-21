@@ -5,7 +5,7 @@ int maxUniqueSplit(string s) {
     int n = s.size();
     int ans = 0;
     for (int i = 0; i < (1 << (n - 1)); ++i) {
-        set<string> st;
+        unordered_set<string> st;
         string cur = "";
         bool isvalid = true;
         for (int j = 0; j < n - 1; j++) {
