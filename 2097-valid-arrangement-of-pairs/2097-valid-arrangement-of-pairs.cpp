@@ -30,7 +30,7 @@ int startNode;
         else {
             // Remove the current vertex and
             // put it in the circuit
-            circuit.push_back(curr_path.back());
+            circuit.push_back(curr_v);
             curr_path.pop_back();
         }
     }
